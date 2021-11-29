@@ -8,11 +8,11 @@ import springlearning.aop.*;
 import javax.annotation.Resource;
 
 /**
- * @author: 虞晓晨
- * @version：
- * @createtime: 2018/11/8
+ * @author 虞晓晨
+ * @version 1.0
+ * @since 2018/11/8
  * @Modifytime: 2018/11/8
- * @Description:
+ * 
  **/
 
 @RunWith(SpringJUnit4ClassRunner.class)
