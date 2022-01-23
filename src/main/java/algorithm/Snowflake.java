@@ -11,17 +11,20 @@ public class Snowflake {
     private long datacenterId;
     //生成的队列
     private long sequence;
-    //最大的机械ID=
-    private long maxWorkerId = -1L ^ (-1L << workerIdBits);
     private long twepoch = 1288834974657L;
     private long workerIdBits = 5L;
     private long datacenterIdBits = 5L;
+    //最大的workerId = -1的补码 异或  -1的补码左移5位 = 31
+    private long maxWorkerId = -1L ^ (-1L << workerIdBits);
+    //同上，最大的datacenterId =  31
     private long maxDatacenterId = -1L ^ (-1L << datacenterIdBits);
+    //对列的位数
     private long sequenceBits = 12L;
-    //
+    //workId偏移数
     private long workerIdShift = sequenceBits;
     private long datacenterIdShift = sequenceBits + workerIdBits;
     private long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
+    //队列掩码（即最大位数）
     private long sequenceMask = -1L ^ (-1L << sequenceBits);
 
     private long lastTimestamp = -1L;
@@ -65,6 +68,7 @@ public class Snowflake {
         }
 
         if (lastTimestamp == timestamp) {
+            //保证了sequence结果肯定小于最大值
             sequence = (sequence + 1) & sequenceMask;
             if (sequence == 0) {
                 timestamp = tilNextMillis(lastTimestamp);
