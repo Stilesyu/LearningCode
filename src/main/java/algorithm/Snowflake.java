@@ -59,17 +59,19 @@ public class Snowflake {
     }
 
     public synchronized long nextId() {
+        //获取当前时间
         long timestamp = timeGen();
-
+        //如果当前时间小于上一次时间，抛异常
         if (timestamp < lastTimestamp) {
             System.err.printf("clock is moving backwards.  Rejecting requests until %d.", lastTimestamp);
             throw new RuntimeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds",
                     lastTimestamp - timestamp));
         }
-
+        //如果时间相同，序列化+1
         if (lastTimestamp == timestamp) {
             //保证了sequence结果肯定小于最大值
             sequence = (sequence + 1) & sequenceMask;
+            //如果序号是0，代表最大值已经取完了，获取下次时间
             if (sequence == 0) {
                 timestamp = tilNextMillis(lastTimestamp);
             }
@@ -78,12 +80,18 @@ public class Snowflake {
         }
 
         lastTimestamp = timestamp;
+        //最近时间-指定时间<<偏移22位 | 机房ID<<偏移 17位 | workId << 偏移 12位 | 序列化
         return ((timestamp - twepoch) << timestampLeftShift) |
                 (datacenterId << datacenterIdShift) |
                 (workerId << workerIdShift) |
                 sequence;
     }
 
+    /**
+     *  获取大于最后一次时间的时间
+     * @author Stilesyu
+     * @since 1.0
+     */
     private long tilNextMillis(long lastTimestamp) {
         long timestamp = timeGen();
         while (timestamp <= lastTimestamp) {
