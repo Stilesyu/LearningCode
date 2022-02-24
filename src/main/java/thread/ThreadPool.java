@@ -1,6 +1,9 @@
 package thread;
 
-import java.util.concurrent.CompletableFuture;
+import org.junit.Test;
+
+
+import java.util.concurrent.*;
 
 public class ThreadPool {
 
@@ -23,5 +26,14 @@ public class ThreadPool {
         Thread.sleep(100000);
     }
 
+    @Test
+    public void test() throws ExecutionException, InterruptedException {
+        ExecutorService service = Executors.newFixedThreadPool(1);
+        Long value = 0L;
+        Future<Long> future = service.submit(() -> {
+
+        }, value);
+        System.out.println(future.get());
+    }
 
 }
