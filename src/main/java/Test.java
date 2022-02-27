@@ -1,3 +1,8 @@
+import cn.hutool.core.lang.hash.Hash;
+
+import java.util.HashMap;
+import java.util.Iterator;
+
 /**
  * @author Stiles yu
  * @since 1.0
@@ -46,6 +51,25 @@ public class Test {
     }
 
 
+    @org.junit.Test
+    public void test() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("a", 1);
+        map.put("b", 2);
+        Iterator<String> iterator = map.keySet().iterator();
+        while (iterator.hasNext()){
+            String key = iterator.next();
+            System.out.println(key);
+        }
+        map.put("c",3);
+
+        for (String s : map.keySet()) {
+            System.out.println(s);
+        }
+//        for (String s : map.keySet()) {
+//            System.out.println("ff");
+//        }
+    }
 
 
 }
