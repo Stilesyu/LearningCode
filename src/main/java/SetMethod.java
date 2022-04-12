@@ -2,6 +2,7 @@ import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import org.junit.Test;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
  * @author Stiles yu
  * @since 1.0
  */
+@SpringBootApplication
 public class SetMethod {
 
 

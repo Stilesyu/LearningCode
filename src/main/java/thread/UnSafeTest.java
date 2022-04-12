@@ -32,7 +32,6 @@ public class UnSafeTest {
             e.printStackTrace();
         }
         throw new IllegalArgumentException();
-
     }
 
 }
