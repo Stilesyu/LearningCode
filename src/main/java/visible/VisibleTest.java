@@ -31,10 +31,6 @@ public class VisibleTest {
     }
 
 
-    public void methodB(){
-        synchronized ()
-    }
-
 
 
 

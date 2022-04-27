@@ -22,9 +22,6 @@ public class Test {
     }
 
 
-    public synchronized void methodB() {
-
-    }
 
     public static synchronized void methodC() {
 
