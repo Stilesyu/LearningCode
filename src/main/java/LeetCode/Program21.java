@@ -15,7 +15,7 @@ public class Program21 {
     public void exec() {
         ListNode node1 = new ListNode(1, new ListNode(2, new ListNode(4)));
         ListNode node2 = new ListNode(1, new ListNode(3, new ListNode(4)));
-        System.out.println(JSONObject.toJSONString(mergeTwoLists(node1, node2)));
+        System.out.println(JSONObject.toJSONString(mergeTwoListsWithRecursion(node1, node2)));
     }
 
 
@@ -69,12 +69,25 @@ public class Program21 {
 
 
     /**
+     * list1 1 1 2
+     * list2 1 3 4
+     *
      * 递归版本
      * @author Stilesyu
      * @since 1.0
      */
     public ListNode mergeTwoListsWithRecursion(ListNode list1, ListNode list2) {
-
+         if (list2 ==null){
+             return list1;
+         }else if (list1 == null){
+             return list2;
+         }else if(list1.val> list2.val){
+             list2.next = mergeTwoListsWithRecursion(list1,list2.next);
+             return list2;
+         }else {
+             list1.next = mergeTwoListsWithRecursion(list1.next,list2);
+             return list1;
+         }
     }
 
 
