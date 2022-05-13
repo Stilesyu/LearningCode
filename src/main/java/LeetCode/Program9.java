@@ -4,7 +4,7 @@ package leetCode;
  * @author Stiles yu
  * @since 1.0
  */
-public class ProgramNine {
+public class Program9 {
 
     public static void main(String[] args) {
         System.out.println(isPalindromeWithoutConvertingString(1));

@@ -4,7 +4,7 @@ package LeetCode;
  * @author Stiles yu
  * @since 1.0
  */
-public class ProgramTwo {
+public class Program2 {
 
     public static void main(String[] args) {
         ListNode nodeA = new ListNode(2);
