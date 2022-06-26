@@ -1,6 +1,4 @@
-import org.checkerframework.checker.units.qual.C;
 import org.junit.Test;
-import org.openjdk.jol.info.ClassLayout;
 
 /**
  * @author Stiles yu
@@ -9,13 +7,11 @@ import org.openjdk.jol.info.ClassLayout;
 public class ObjectResearch {
     @Test
     public void objectHeader() {
-        System.out.println(Runtime.getRuntime().totalMemory());
-        System.out.println(ClassLayout.parseInstance(new Car()).toPrintable());
+        for (int i = 0; i < 100000000; i++) {
+            calculate();
+        }
     }
-    class Car {
-        int a;
-        long b;
-        Long b1;
-        Object o;
+    public void calculate() {
+        Integer number = new Integer(0);
     }
 }
